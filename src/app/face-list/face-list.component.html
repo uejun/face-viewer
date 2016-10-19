@@ -1,0 +1,10 @@
+<md-grid-list cols="4" rowHeight="300px">
+    <md-grid-tile *ngFor="let img of asyncImages | async | paginate: {  id: 'server', itemsPerPage: 12, currentPage: p, totalItems:10000}; let i = index;" [colspan]="1" [rowspan]="1"
+                  [style.background]="red">
+        <img src="{{img.url}}" alt="">
+    </md-grid-tile>
+</md-grid-list>
+<div style="text-align: center;">
+    <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+    <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+</div>
